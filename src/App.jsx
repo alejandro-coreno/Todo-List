@@ -1,13 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Formulario } from "./components/Formulario";
 import { Listado } from "./components/Listado";
 import { v4 as uuidv4 } from 'uuid';
 
+const initialValues = localStorage.getItem("tareas") || [];
 
 const App = () =>  {
 
-  
-  const [tareas, setTareas] = useState([]);
+  const [tareas, setTareas] = useState(initialValues);
 
   const handlerTareas = ( nuevaTarea ) => {
     setTareas([...tareas, {
@@ -27,8 +27,13 @@ const App = () =>  {
           ...tareas, nuevaTarea: nuevoTexto
         }
       }
+      return tarea
     }));
   }
+
+  useEffect(() => {
+    localStorage.setItem("tareas", JSON.stringify(tareas));
+  }, [tareas])
 
 
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FormEdit } from "./FormEdit";
 
-export const Tarea = ({ item , handlerDeleteTareas, handleUpdateTareas}) => {
+export const Tarea = ({ item , handlerDeleteTareas, handlerUpdateTareas}) => {
 
     const [edit, setEdit] = useState(false);
 
@@ -19,9 +19,14 @@ export const Tarea = ({ item , handlerDeleteTareas, handleUpdateTareas}) => {
             
             {
                 edit 
-                ? 
-                    <FormEdit handlerUpdateTareas={handleUpdateTareas} handlerEdit={handlerEdit} tareaNueva={item.nuevaTarea} id={item.id}/> 
-                : 
+                ?
+                    <FormEdit 
+                        handlerUpdateTareas={handlerUpdateTareas}
+                        handlerEdit={handlerEdit} 
+                        tareaNueva={item.nuevaTarea} 
+                        id={item.id}
+                    /> 
+                :
                     <h1 className="font-normal tracking-wide">{item.nuevaTarea}</h1>
             }
             <div className="flex gap-6">
