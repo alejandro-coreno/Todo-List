@@ -3,7 +3,7 @@ import { Formulario } from "./components/Formulario";
 import { Listado } from "./components/Listado";
 import { v4 as uuidv4 } from 'uuid';
 
-const initialValues = localStorage.getItem("tareas") || [];
+const initialValues = JSON.parse(localStorage.getItem("tareas")) || [];
 
 const App = () =>  {
 

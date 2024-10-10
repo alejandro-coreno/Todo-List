@@ -6,6 +6,10 @@ export const Formulario = ({handlerTareas}) => {
 
     const handlerAddTarea = (e) => {
         e.preventDefault();
+        if (!nuevaTarea.trim()) {
+            alert("Agrega una tarea");
+            return
+        }
         handlerTareas(nuevaTarea)
         setNuevaTarea("");
     }

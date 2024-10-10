@@ -15,7 +15,7 @@ export const Listado = ({ handlerUpdateTareas, handlerDeleteTareas,  tareas = []
                     />
                    ))
                 : 
-                <h1 className="text-blue-500 font-medium tracking-wider text-center">No hay tareas</h1>
+                <h1 className="text-blue-500 font-medium tracking-wider text-center">-- No hay tareas --</h1>
             }
         </div>
     );
