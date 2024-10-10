@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const Formulario = ({handlerTareas}) => {
 
@@ -7,7 +8,11 @@ export const Formulario = ({handlerTareas}) => {
     const handlerAddTarea = (e) => {
         e.preventDefault();
         if (!nuevaTarea.trim()) {
-            alert("Agrega una tarea");
+            Swal.fire({
+                title: "Error",
+                text: "¡Agrega una tarea en el formulario!",
+                icon: "error"
+              });
             return
         }
         handlerTareas(nuevaTarea)
