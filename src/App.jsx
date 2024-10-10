@@ -13,7 +13,21 @@ const App = () =>  {
     setTareas([...tareas, {
       nuevaTarea, 
       id: uuidv4()
-    }])
+    }]);
+  }
+
+  const handlerDeleteTareas = (id) => {
+    setTareas(tareas.filter((tarea) => tarea.id !==  id));
+  }
+
+  const handlerUpdateTareas = (id, nuevoTexto) => {
+    setTareas(tareas.map(( tarea ) => {
+      if (tarea.id == id) {
+        return {
+          ...tareas, nuevaTarea: nuevoTexto
+        }
+      }
+    }));
   }
 
 
@@ -25,7 +39,11 @@ const App = () =>  {
 
         <Formulario handlerTareas={handlerTareas} />
 
-        <Listado tareas={tareas} />
+        <Listado 
+          tareas={tareas} 
+          handlerDeleteTareas={handlerDeleteTareas} 
+          handlerUpdateTareas={handlerUpdateTareas} 
+        />
           
       </div>
     </div>

@@ -1,13 +1,20 @@
 import { useState } from "react"
 
-export const FormEdit = ({handlerEdit, tareaNueva}) => {
+export const FormEdit = ({handlerEdit, tareaNueva, handlerUpdateTareas, id}) => {
 
     const [editarTarea, setEditarTarea] = useState( tareaNueva );
+
+    
+
+    const handlerUpdateTarea = (id) => {
+        handlerUpdateTareas(id, editarTarea);
+        handlerEdit();
+    }
 
     return (
         <form className="w-full border flex justify-between">
             <input
-                className="border border-red-300 w-full " 
+                className="w-full p-1" 
                 type="text" 
                 value={editarTarea}
                 onChange={ (e) =>  setEditarTarea(e.target.value)} 
@@ -15,14 +22,12 @@ export const FormEdit = ({handlerEdit, tareaNueva}) => {
             />
 
             <div className="flex gap-6">
-                <button type="button">
-                    {/* <img src="https://img.icons8.com/ios/22/edit--v1.png" alt="edit--v1"/> */}
-                    Actualizar
+                <button type="button" className="w-7" onClick={ ()  => handlerUpdateTarea(id) }>
+                    <img src="https://img.icons8.com/office/22/refresh--v1.png" alt="edit--v1"/>
                 </button>
 
-                <button onClick={handlerEdit}>
-                    {/* <img src="https://img.icons8.com/ios/22/delete--v1.png" alt="delete--v1"/> */}
-                    cerrar
+                <button type="button" className="w-7" onClick={handlerEdit}>
+                    <img src="https://img.icons8.com/color/24/close-window.png" alt="delete--v1"/>
                 </button>
             </div>
         </form>

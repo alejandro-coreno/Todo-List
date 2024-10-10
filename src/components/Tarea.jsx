@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { FormEdit } from "./FormEdit";
 
-export const Tarea = ({ item }) => {
+export const Tarea = ({ item , handlerDeleteTareas, handleUpdateTareas}) => {
 
     const [edit, setEdit] = useState(false);
 
     const handlerEdit = () => {
         setEdit(!edit )
+    }
+
+    const handlerDeleteTarea = (id) => {
+        handlerDeleteTareas(id)
     }
 
     return (
@@ -16,7 +20,7 @@ export const Tarea = ({ item }) => {
             {
                 edit 
                 ? 
-                    <FormEdit handlerEdit={handlerEdit} tareaNueva={item.nuevaTarea} /> 
+                    <FormEdit handlerUpdateTareas={handleUpdateTareas} handlerEdit={handlerEdit} tareaNueva={item.nuevaTarea} id={item.id}/> 
                 : 
                     <h1 className="font-normal tracking-wide">{item.nuevaTarea}</h1>
             }
@@ -29,7 +33,7 @@ export const Tarea = ({ item }) => {
                             <img src="https://img.icons8.com/ios/22/edit--v1.png" alt="edit--v1"/>
                         </button>
 
-                        <button>
+                        <button onClick={ () => handlerDeleteTarea(item.id)}>
                             <img src="https://img.icons8.com/ios/22/delete--v1.png" alt="delete--v1"/>
                         </button>
                     </>
