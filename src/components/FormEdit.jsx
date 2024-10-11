@@ -4,11 +4,11 @@ export const FormEdit = ({handlerEdit, tareaNueva, handlerUpdateTareas, id}) => 
 
     const [editarTarea, setEditarTarea] = useState( tareaNueva );
 
-    
-
     const handlerUpdateTarea = (id) => {
         handlerUpdateTareas(id, editarTarea);
         handlerEdit();
+
+        setEditarTarea("");
     }
 
     return (

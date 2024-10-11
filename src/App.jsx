@@ -1,40 +1,11 @@
-import { useEffect, useState } from "react"
+
 import { Formulario } from "./components/Formulario";
 import { Listado } from "./components/Listado";
-import { v4 as uuidv4 } from 'uuid';
-
-const initialValues = JSON.parse(localStorage.getItem("tareas")) || [];
+import { useTarea } from "./hooks/useTarea";
 
 const App = () =>  {
 
-  const [tareas, setTareas] = useState(initialValues);
-
-  const handlerTareas = ( nuevaTarea ) => {
-    setTareas([...tareas, {
-      nuevaTarea, 
-      id: uuidv4()
-    }]);
-  }
-
-  const handlerDeleteTareas = (id) => {
-    setTareas(tareas.filter((tarea) => tarea.id !==  id));
-  }
-
-  const handlerUpdateTareas = (id, nuevoTexto) => {
-    setTareas(tareas.map(( tarea ) => {
-      if (tarea.id == id) {
-        return {
-          ...tareas, nuevaTarea: nuevoTexto
-        }
-      }
-      return tarea
-    }));
-  }
-
-  useEffect(() => {
-    localStorage.setItem("tareas", JSON.stringify(tareas));
-  }, [tareas])
-
+  const { tareas, handlerTareas, handlerUpdateTareas, handlerDeleteTareas } = useTarea();
 
   return (
     <div className="w-full flex justify-center mt-5">
