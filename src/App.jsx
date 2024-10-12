@@ -2,7 +2,6 @@
 import { Formulario } from "./components/Formulario";
 import { Listado } from "./components/Listado";
 
-
 const App = () =>  {
 
   return (
