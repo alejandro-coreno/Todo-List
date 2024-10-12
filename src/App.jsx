@@ -1,11 +1,9 @@
 
 import { Formulario } from "./components/Formulario";
 import { Listado } from "./components/Listado";
-import { useTarea } from "./hooks/useTarea";
+
 
 const App = () =>  {
-
-  const { tareas, handlerTareas, handlerUpdateTareas, handlerDeleteTareas } = useTarea();
 
   return (
     <div className="w-full flex justify-center mt-5">
@@ -13,14 +11,11 @@ const App = () =>  {
           
         <h1 className="text-xl text-sky-600 font-medium">Listado App</h1>
 
-        <Formulario handlerTareas={handlerTareas} />
+        {/* Componente Formulario */}
+        <Formulario />
 
-        <Listado 
-          tareas={tareas} 
-          handlerDeleteTareas={handlerDeleteTareas} 
-          handlerUpdateTareas={handlerUpdateTareas} 
-        />
-          
+        {/* Componente Listado */}
+        <Listado />
       </div>
     </div>
   );

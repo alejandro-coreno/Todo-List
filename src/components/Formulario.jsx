@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ContextTarea } from "../context/contextTarea";
 import Swal from "sweetalert2";
 
-export const Formulario = ({handlerTareas}) => {
+export const Formulario = () => {
+
+    const { handlerTareas } = useContext(ContextTarea);
 
     const [nuevaTarea, setNuevaTarea ] = useState("");
 

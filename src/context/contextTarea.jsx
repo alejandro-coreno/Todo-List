@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-export const contextTarea = createContext(null);
+export const ContextTarea = createContext(null);
 

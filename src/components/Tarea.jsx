@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FormEdit } from "./FormEdit";
+import { ContextTarea } from "../context/contextTarea";
 
-export const Tarea = ({ item , handlerDeleteTareas, handlerUpdateTareas}) => {
-
+export const Tarea = ({ item }) => {
+    
+    const { handlerDeleteTareas } = useContext(ContextTarea);
     const [edit, setEdit] = useState(false);
 
     const handlerEdit = () => {
@@ -21,7 +23,6 @@ export const Tarea = ({ item , handlerDeleteTareas, handlerUpdateTareas}) => {
                 edit 
                 ?
                     <FormEdit 
-                        handlerUpdateTareas={handlerUpdateTareas}
                         handlerEdit={handlerEdit} 
                         tareaNueva={item.nuevaTarea} 
                         id={item.id}

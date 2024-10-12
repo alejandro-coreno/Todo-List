@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -6,6 +6,7 @@ const initialValues = JSON.parse(localStorage.getItem("tareas")) || [];
 
 export const useTarea = () => {
     const [tareas, setTareas] = useState(initialValues);
+    // const [tareas, dispatch] = useReducer(reducer, initialValues)
 
     const handlerTareas = ( nuevaTarea ) => {
         setTareas([...tareas, {
