@@ -1,33 +1,22 @@
-import { useEffect, useReducer, useState } from "react"
-import { v4 as uuidv4 } from 'uuid';
-
+import { useEffect, useReducer } from "react";
+import { tareasReducer } from "../reducers/tareasReducer";
 
 const initialValues = JSON.parse(localStorage.getItem("tareas")) || [];
 
 export const useTarea = () => {
-    const [tareas, setTareas] = useState(initialValues);
-    // const [tareas, dispatch] = useReducer(reducer, initialValues)
+
+    const [ tareas, dispatch ] = useReducer( tareasReducer, initialValues ); 
 
     const handlerTareas = ( nuevaTarea ) => {
-        setTareas([...tareas, {
-        nuevaTarea, 
-        id: uuidv4()
-        }]);
+        dispatch({ type: 'handlerTareas', payload: nuevaTarea })
     }
 
     const handlerDeleteTareas = (id) => {
-        setTareas(tareas.filter((tarea) => tarea.id !==  id));
+        dispatch({ type: 'handlerDeleteTareas', payload: id })
     }
 
     const handlerUpdateTareas = (id, nuevoTexto) => {
-        setTareas(tareas.map(( tarea ) => {
-        if (tarea.id == id) {
-            return {
-            ...tareas, nuevaTarea: nuevoTexto
-            }
-        }
-        return tarea
-        }));
+        dispatch({ type: 'handlerUpdateTareas', payload: { id, nuevoTexto } })
     }
 
     useEffect(() => {
