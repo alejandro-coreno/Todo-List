@@ -8,6 +8,8 @@
 
 ### Se Manejan hooks propios de react como useState, useEffect, useReducer etc
 
+### Cuenta con alertas personalizadas para el usuario
+
 
 #### Liga de la app
 
