@@ -11,7 +11,7 @@
 ### Cuenta con alertas personalizadas para el usuario
 
 
-#### Liga de la app
+#### Liga de la app Todo Lista
 
 ```
     https://todo-list-tareas.netlify.app/
